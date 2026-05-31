@@ -6,10 +6,15 @@
     }"
   >
     <div class="text-center flex flex-col justify-center items-center">
-      <img
-        class="w-30 h-30 rounded-full mb-4"
-        src="https://stories.cnnbrasil.com.br/wp-content/uploads/sites/9/2025/02/zoe-saldana-neytiri-avatar-2009-avatar-the-way-of-water-v0-vbjx7fv0qoed1.webp"
+      <NuxtImg
+        class="rounded-full mb-4"
+        :src="professional.photo"
+        alt="Professional Image"
+        loading="lazy"
+        width="100"
+        height="100"
       />
+
       <div class="flex flex-col justify-center gap-3">
         <h2 class="text-lg font-bold">{{ professional.name }}</h2>
         <p class="text-sm text-gray-500">{{ professional.profession }}</p>
