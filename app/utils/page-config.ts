@@ -1,0 +1,1 @@
+export const PROFESSIONALS_PER_PAGE = 10;
