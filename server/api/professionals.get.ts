@@ -3,7 +3,7 @@ import { generateProfessionals } from "../utils/professionals";
 
 const allProfessionals = generateProfessionals(500);
 
-export default defineEventHandler((event) => {
+export default defineEventHandler(async (event) => {
   const query = getQuery(event);
 
   const page = Math.max(1, parseInt((query.page as string) || "1"));
@@ -29,6 +29,9 @@ export default defineEventHandler((event) => {
   }
 
   const data = allProfessionals.slice(offset, offset + limit);
+
+  // Adicionar delay para simular latência da API
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return {
     data,
