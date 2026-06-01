@@ -33,6 +33,7 @@ const { setCategories } = useCategoriesStore();
 const toast = useToast();
 const { isLoading, setLoading } = useLayoutLoadingStore();
 const { currentCategory, currentSearchTerm } = useAppliedFiltersStore();
+const { currentSort } = useSortingStore();
 
 onMounted(async () => {
   const [professionalsData, categories] = await Promise.all([
@@ -70,6 +71,7 @@ const getProfissionals = async () => {
       PROFESSIONALS_PER_PAGE,
       currentCategory.value,
       currentSearchTerm.value,
+      currentSort.value,
     );
 
     return { data: [...data], pagination };
@@ -92,7 +94,7 @@ const onPageChange = async () => {
 };
 
 watchDebounced(
-  [currentCategory, currentSearchTerm],
+  [currentCategory, currentSearchTerm, currentSort],
   async () => {
     page.value = 1;
     const { data, pagination } = await getProfissionals();

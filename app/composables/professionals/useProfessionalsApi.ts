@@ -7,12 +7,13 @@ const useProfessionalsApi = () => {
     pageSize: number,
     category?: string,
     search?: string,
+    sort?: string,
   ) => {
     return $fetch<{ data: Professional[]; pagination: Pagination }>(
       "/api/professionals",
       {
         method: "GET",
-        params: { page, pageSize, category, search },
+        params: { page, pageSize, category, search, sort },
       },
     );
   };

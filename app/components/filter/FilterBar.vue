@@ -10,7 +10,12 @@
       placeholder="Busque por nome ou profissão..."
     />
 
-    <USelect :disabled="isLoading" />
+    <USelect
+      :default-value="currentSort"
+      @update:model-value="(value: string) => setCurrentSort(value as SortType)"
+      :disabled="isLoading"
+      :items="getSortingOptions()"
+    />
 
     <USelectMenu
       :disabled="isLoading"
@@ -22,6 +27,8 @@
 </template>
 
 <script setup lang="ts">
+import type { SortType } from "~~/shared/constants/sort";
+
 const { getCategoriesWithAllOption } = useCategoriesStore();
 const { isLoading } = useLayoutLoadingStore();
 const {
@@ -30,4 +37,6 @@ const {
   setCurrentCategory,
   setCurrentSearchTerm,
 } = useAppliedFiltersStore();
+const { currentSort, setCurrentSort } = useSortingStore();
+const { getSortingOptions } = useSortingOptions();
 </script>

@@ -2,6 +2,8 @@ import { defineEventHandler, getQuery } from "h3";
 import { allProfessionals } from "../utils/data";
 import { ALL_CATEGORIES } from "../../shared/constants/filters";
 import { applyFilters } from "../utils/filters";
+import { applySorting } from "../utils/sort";
+import { SortType } from "../../shared/constants/sort";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
@@ -10,6 +12,7 @@ export default defineEventHandler(async (event) => {
   const pageSize = Math.max(1, parseInt((query.pageSize as string) || "10"));
   const category = (query.category as string) || ALL_CATEGORIES;
   const search = (query.search as string) || undefined;
+  const sort = (query.sort as SortType) || undefined;
 
   const filteredProfessionals = applyFilters(
     allProfessionals,
@@ -17,18 +20,20 @@ export default defineEventHandler(async (event) => {
     search,
   );
 
+  const sortedProfessionals = applySorting(filteredProfessionals, sort);
+
   const offset = (page - 1) * pageSize;
   const limit = pageSize;
 
-  const totalPages = Math.ceil(filteredProfessionals.length / pageSize);
+  const totalPages = Math.ceil(sortedProfessionals.length / pageSize);
 
-  if (page > totalPages && filteredProfessionals.length > 0) {
+  if (page > totalPages && sortedProfessionals.length > 0) {
     return {
       data: [],
       pagination: {
         page,
         pageSize,
-        total: filteredProfessionals.length,
+        total: sortedProfessionals.length,
         totalPages,
         hasNextPage: false,
         hasPreviousPage: page > 1,
@@ -36,7 +41,7 @@ export default defineEventHandler(async (event) => {
     };
   }
 
-  const data = filteredProfessionals.slice(offset, offset + limit);
+  const data = sortedProfessionals.slice(offset, offset + limit);
 
   // Adicionar delay para simular latência da API
   await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -46,7 +51,7 @@ export default defineEventHandler(async (event) => {
     pagination: {
       page,
       pageSize,
-      total: filteredProfessionals.length,
+      total: sortedProfessionals.length,
       totalPages,
       hasNextPage: page < totalPages,
       hasPreviousPage: page > 1,
