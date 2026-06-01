@@ -93,13 +93,21 @@ const onPageChange = async () => {
   setProfessionals(data);
 };
 
+const onFilterOrSortingChange = async () => {
+  page.value = 1;
+  const { data, pagination } = await getProfissionals();
+  setProfessionals(data);
+  setTotalPages(pagination.totalPages);
+};
+
+watch([currentCategory, currentSort], async () => {
+  onFilterOrSortingChange();
+});
+
 watchDebounced(
-  [currentCategory, currentSearchTerm, currentSort],
+  [currentSearchTerm],
   async () => {
-    page.value = 1;
-    const { data, pagination } = await getProfissionals();
-    setProfessionals(data);
-    setTotalPages(pagination.totalPages);
+    onFilterOrSortingChange();
   },
   { debounce: 500 },
 );
