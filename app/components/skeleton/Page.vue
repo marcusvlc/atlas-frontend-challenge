@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col gap-4">
-    <SkeletonFilterBar />
     <div class="card-list">
       <SkeletonCard v-for="n in numberOfSkeletons" :key="n" />
     </div>

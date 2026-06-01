@@ -8,9 +8,10 @@
       placeholder="Search..."
     />
 
-    <USelect />
+    <USelect :disabled="isLoading" />
 
     <USelectMenu
+      :disabled="isLoading"
       :items="getCategoriesWithAllOption()"
       v-model="currentCategory"
     />
@@ -18,7 +19,6 @@
 </template>
 
 <script setup lang="ts">
-import { ALL_CATEGORIES } from "../../../shared/constants/filters";
-
 const { getCategoriesWithAllOption, currentCategory } = useCategoriesStore();
+const { isLoading } = useLayoutLoadingStore();
 </script>

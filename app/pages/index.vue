@@ -1,18 +1,19 @@
 <template>
-  <div class="flex flex-col h-screen p-4">
+  <div class="flex flex-col h-screen p-4 gap-4">
+    <FilterBar />
+
+    <UPagination
+      class="ml-auto"
+      :disabled="isLoading"
+      v-model:page="page"
+      :total="totalPages"
+      @update:page="onPageChange"
+    />
+
     <SkeletonPage v-if="isLoading" />
 
     <div class="flex flex-col flex-1 items-center gap-4 w-full" v-else>
-      <FilterBar />
-
       <CardProfessionalList :professionals="professionals" />
-
-      <UPagination
-        class="mt-auto"
-        v-model:page="page"
-        :total="totalPages"
-        @update:page="onPageChange"
-      />
     </div>
   </div>
 </template>
