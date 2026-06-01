@@ -31,8 +31,7 @@ const { professionals, setProfessionals, setProfessionalsTotalCount } =
 const { setCategories } = useCategoriesStore();
 const toast = useToast();
 const { currentCategory } = useCategoriesStore();
-
-const isLoading = ref(true);
+const { isLoading, setLoading } = useLayoutLoadingStore();
 
 onMounted(async () => {
   const [professionalsData, categories] = await Promise.all([
@@ -64,7 +63,7 @@ const getCategories = async () => {
 
 const getProfissionals = async () => {
   try {
-    isLoading.value = true;
+    setLoading(true);
     const { data, pagination } = await fetchProfessionals(
       page.value,
       PROFESSIONALS_PER_PAGE,
@@ -81,7 +80,7 @@ const getProfissionals = async () => {
 
     return { data: [], pagination: buildDefaultPagination() };
   } finally {
-    isLoading.value = false;
+    setLoading(false);
   }
 };
 

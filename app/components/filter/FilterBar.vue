@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full">
+  <div class="flex w-full gap-2">
     <UInput
       icon="i-lucide-search"
       size="md"

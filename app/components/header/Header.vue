@@ -15,7 +15,8 @@
     </div>
 
     <div>
-      <UBadge variant="subtle" color="neutral"
+      <SkeletonBadge v-if="isLoading" />
+      <UBadge v-else variant="subtle" color="neutral"
         >{{ professionalsTotalCount }} Profissionais registrados</UBadge
       >
     </div>
@@ -24,4 +25,5 @@
 
 <script setup lang="ts">
 const { professionalsTotalCount } = useProfessionalsStore();
+const { isLoading } = useLayoutLoadingStore();
 </script>
