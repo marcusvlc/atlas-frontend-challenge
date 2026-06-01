@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+.card-list {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 gap-x-7;
+}
+
 @theme static {
   --font-sans: "Public Sans", sans-serif;
 

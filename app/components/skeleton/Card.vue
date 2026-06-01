@@ -1,3 +1,3 @@
 <template>
-  <USkeleton class="w-80 h-100" />
+  <USkeleton class="h-100" />
 </template>

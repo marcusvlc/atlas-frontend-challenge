@@ -1,9 +1,6 @@
 <template>
   <div class="w-full h-full">
-    <div
-      v-if="professionals.length"
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 gap-x-7"
-    >
+    <div v-if="professionals.length" class="card-list">
       <CardProfessional
         v-for="professional in professionals"
         :key="professional.id"

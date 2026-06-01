@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-4 gap-2">
+  <div class="card-list">
     <SkeletonCard v-for="n in numberOfSkeletons" :key="n" />
   </div>
 </template>

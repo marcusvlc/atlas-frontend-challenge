@@ -3,6 +3,8 @@
     <SkeletonPage v-if="isLoading" />
 
     <div class="flex flex-col flex-1 items-center gap-4 w-full" v-else>
+      <FilterBar />
+
       <CardProfessionalList :professionals="professionals" />
 
       <UPagination
@@ -21,20 +23,44 @@ import {
   buildDefaultPagination,
 } from "~/utils/page-config";
 
+const { fetchCategories } = useCategoriesApi();
 const { fetchProfessionals } = useProfessionalsApi();
-
 const { page, total: totalPages, setTotalPages } = usePagination();
-const { professionals, setProfessionals } = useProfessionalsStore();
+const { professionals, setProfessionals, setProfessionalsTotalCount } =
+  useProfessionalsStore();
+const { setCategories } = useCategoriesStore();
 const toast = useToast();
+const { currentCategory } = useCategoriesStore();
 
 const isLoading = ref(true);
 
 onMounted(async () => {
-  const { pagination, data } = await getProfissionals();
+  const [professionalsData, categories] = await Promise.all([
+    getProfissionals(),
+    getCategories(),
+  ]);
+  const { data, pagination } = professionalsData;
 
+  setCategories(categories);
   setProfessionals(data);
   setTotalPages(pagination.totalPages);
+  setProfessionalsTotalCount(pagination.total);
 });
+
+const getCategories = async () => {
+  try {
+    const categories = await fetchCategories();
+    return categories;
+  } catch {
+    toast.add({
+      color: "error",
+      title: "Ocorreu um erro ao carregar as categorias",
+      description: "Tente novamente mais tarde.",
+    });
+
+    return [];
+  }
+};
 
 const getProfissionals = async () => {
   try {
@@ -42,6 +68,7 @@ const getProfissionals = async () => {
     const { data, pagination } = await fetchProfessionals(
       page.value,
       PROFESSIONALS_PER_PAGE,
+      currentCategory.value,
     );
 
     return { data: [...data], pagination };
@@ -62,4 +89,11 @@ const onPageChange = async () => {
   const { data } = await getProfissionals();
   setProfessionals(data);
 };
+
+watch(currentCategory, async () => {
+  page.value = 1;
+  const { data, pagination } = await getProfissionals();
+  setProfessionals(data);
+  setTotalPages(pagination.totalPages);
+});
 </script>

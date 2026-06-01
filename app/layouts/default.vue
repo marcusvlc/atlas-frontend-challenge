@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header />
+
     <slot />
     <!-- seu footer, etc -->
   </div>
