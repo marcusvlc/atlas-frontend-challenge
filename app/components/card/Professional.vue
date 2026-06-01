@@ -1,49 +1,55 @@
 <template>
   <UCard
-    class="flex flex-col justify-center bg-slate-800 border border-slate-700 hover:border-primary"
+    class="flex flex-col h-full bg-slate-800 border border-slate-700 hover:border-primary"
     :ui="{
-      body: 'p-3!',
+      body: 'p-3! flex flex-col flex-1',
     }"
   >
-    <div class="text-center flex flex-col justify-center items-center">
-      <NuxtImg
-        class="rounded-full mb-4"
-        :src="professional.photo"
-        alt="Professional Image"
-        loading="lazy"
-        width="100"
-        height="100"
-      />
+    <div class="text-center flex flex-col justify-start items-center flex-1">
+      <div class="flex flex-col justify-center items-center">
+        <NuxtImg
+          class="rounded-full mb-4"
+          :src="professional.photo"
+          alt="Professional Image"
+          loading="lazy"
+          width="100"
+          height="100"
+        />
 
-      <div class="flex flex-col justify-center gap-3">
-        <h2 class="text-lg font-bold">{{ professional.name }}</h2>
-        <p class="text-sm text-gray-500">{{ professional.profession }}</p>
+        <div class="flex flex-col justify-center gap-3">
+          <h2 class="text-lg font-bold">{{ professional.name }}</h2>
+          <p class="text-sm text-gray-500">{{ professional.profession }}</p>
 
-        <div class="flex items-center justify-center gap-1">
-          <UIcon name="i-lucide-star" class="text-yellow-300" />
-          <span class="text-xs font-semibold"
-            >{{ professional.rating }} ({{ professional.reviews.length }})</span
-          >
+          <div class="flex items-center justify-center gap-1">
+            <UIcon name="i-lucide-star" class="text-yellow-300" />
+            <span class="text-xs font-semibold"
+              >{{ professional.rating }} ({{
+                professional.reviews.length
+              }})</span
+            >
+          </div>
+
+          <div class="flex items-center justify-center gap-1">
+            <UIcon name="i-lucide-map-pin" class="text-gray-500" />
+            <span class="text-xs text-gray-500"
+              >{{ professional.distance }} km de distância</span
+            >
+          </div>
         </div>
+      </div>
 
-        <div class="flex items-center justify-center gap-1">
-          <UIcon name="i-lucide-map-pin" class="text-gray-500" />
-          <span class="text-xs text-gray-500"
-            >{{ professional.distance }} km de distância</span
-          >
-        </div>
+      <div class="flex-1" />
 
-        <div class="flex flex-wrap justify-center gap-2">
-          <UBadge
-            v-for="service in professional.services"
-            :key="service"
-            variant="soft"
-            class="self-start"
-            color="primary"
-          >
-            {{ service }}
-          </UBadge>
-        </div>
+      <div class="flex flex-wrap justify-center gap-2 mt-4 w-full">
+        <UBadge
+          v-for="service in professional.services"
+          :key="service"
+          variant="soft"
+          class="self-start"
+          color="primary"
+        >
+          {{ service }}
+        </UBadge>
       </div>
 
       <hr class="text-slate-700 h-px w-full mt-5" />
