@@ -1,6 +1,7 @@
 import { defineEventHandler, getQuery } from "h3";
 import { allProfessionals } from "../utils/data";
 import { ALL_CATEGORIES } from "../../shared/constants/filters";
+import { applyFilters } from "../utils/filters";
 
 export default defineEventHandler(async (event) => {
   const query = getQuery(event);
@@ -8,13 +9,13 @@ export default defineEventHandler(async (event) => {
   const page = Math.max(1, parseInt((query.page as string) || "1"));
   const pageSize = Math.max(1, parseInt((query.pageSize as string) || "10"));
   const category = (query.category as string) || ALL_CATEGORIES;
+  const search = (query.search as string) || undefined;
 
-  const filteredProfessionals =
-    category === ALL_CATEGORIES
-      ? allProfessionals
-      : allProfessionals.filter(
-          (professional) => professional.category === category,
-        );
+  const filteredProfessionals = applyFilters(
+    allProfessionals,
+    category,
+    search,
+  );
 
   const offset = (page - 1) * pageSize;
   const limit = pageSize;
