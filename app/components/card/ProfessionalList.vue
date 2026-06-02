@@ -5,6 +5,7 @@
         v-for="professional in professionals"
         :key="professional.id"
         :professional="professional"
+        @on-see-profile="emit('onSeeProfile', professional)"
       />
     </div>
 
@@ -19,6 +20,12 @@
 </template>
 
 <script setup lang="ts">
+import type { Professional } from "~~/shared/types/professionals";
+
+const emit = defineEmits<{
+  onSeeProfile: [professional: Professional];
+}>();
+
 defineProps<{
   professionals: Professional[];
 }>();

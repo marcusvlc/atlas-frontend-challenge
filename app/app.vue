@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <UApp>
+  <UApp class="font-sans">
     <UMain>
       <NuxtLayout>
         <NuxtPage />

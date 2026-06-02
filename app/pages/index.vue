@@ -2,6 +2,12 @@
   <div class="flex flex-col h-screen p-4 gap-4">
     <FilterBar />
 
+    <SidebarProfessional
+      v-if="currentProfessional"
+      :profesional="currentProfessional"
+      v-model:open="showProfessionalSidebar"
+    />
+
     <UPagination
       class="ml-auto"
       :disabled="isLoading"
@@ -13,12 +19,16 @@
     <SkeletonPage v-if="isLoading" />
 
     <div class="flex flex-col flex-1 items-center gap-4 w-full" v-else>
-      <CardProfessionalList :professionals="professionals" />
+      <CardProfessionalList
+        :professionals="professionals"
+        @on-see-profile="handleSeeProfile"
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { Professional } from "~~/shared/types/professionals";
 import {
   PROFESSIONALS_PER_PAGE,
   buildDefaultPagination,
@@ -34,6 +44,9 @@ const toast = useToast();
 const { isLoading, setLoading } = useLayoutLoadingStore();
 const { currentCategory, currentSearchTerm } = useAppliedFiltersStore();
 const { currentSort } = useSortingStore();
+
+const currentProfessional = ref<Professional | undefined>();
+const showProfessionalSidebar = ref(false);
 
 onMounted(async () => {
   const [professionalsData, categories] = await Promise.all([
@@ -86,6 +99,11 @@ const getProfissionals = async () => {
   } finally {
     setLoading(false);
   }
+};
+
+const handleSeeProfile = (professional: Professional) => {
+  currentProfessional.value = professional;
+  showProfessionalSidebar.value = true;
 };
 
 const onPageChange = async () => {

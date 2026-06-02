@@ -1,12 +1,8 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-.card-list {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 gap-x-7;
-}
-
-@theme static {
-  --font-sans: "Public Sans", sans-serif;
+@theme {
+  --font-sans: -apple-system, BlinkMacSystemFont, sans-serif;
 
   --color-green-50: #effdf5;
   --color-green-100: #d9fbe8;
@@ -19,6 +15,14 @@
   --color-green-800: #016538;
   --color-green-900: #0a5331;
   --color-green-950: #052e16;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+.card-list {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 gap-x-7;
 }
 
 button,
