@@ -7,13 +7,12 @@
   >
     <div class="text-center flex flex-col justify-start items-center flex-1">
       <div class="flex flex-col justify-center items-center">
-        <NuxtImg
-          class="rounded-full mb-4"
+        <CommonsOptimizedImage
           :src="professional.photo"
           alt="Professional Image"
-          loading="lazy"
-          width="100"
-          height="100"
+          :width="100"
+          :height="100"
+          custom-class="rounded-full mb-4 w-24 h-24"
         />
 
         <div class="flex flex-col justify-center gap-3">

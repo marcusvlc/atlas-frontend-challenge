@@ -1,64 +1,82 @@
-# Nuxt Starter Template
+# Atlas Frontend Challenge
 
-[![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
+## Sobre o Projeto
 
-Use this template to get started with [Nuxt UI](https://ui.nuxt.com) quickly.
+Este projeto é uma aplicação web de **listagem de profissionais** com funcionalidades avançadas de filtro e ordenação. A aplicação permite que usuários visualizem um catálogo de profissionais, filtrem por categorias e outras opções, e ordenem os resultados conforme suas preferências.
 
-- [Live demo](https://starter-template.nuxt.dev/)
-- [Documentation](https://ui.nuxt.com/docs/getting-started/installation/nuxt)
+**Funcionalidades principais:**
 
-<a href="https://starter-template.nuxt.dev/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-dark.png">
-    <source media="(prefers-color-scheme: light)" srcset="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png">
-    <img alt="Nuxt Starter Template" src="https://ui.nuxt.com/assets/templates/nuxt/starter-light.png" width="830" height="466">
-  </picture>
-</a>
+- ✨ Listagem responsiva de profissionais
+- 🔍 Sistema de filtros dinâmicos
+- 📊 Opções de ordenação personalizáveis
+- ⚡ Carregamento otimizado de dados
+- 📱 Design responsivo para dispositivos móveis
 
-> The starter template for Vue is on https://github.com/nuxt-ui-templates/starter-vue.
+## Publicação
 
-## Quick Start
+A aplicação está publicada e disponível em:
 
-```bash [Terminal]
-npm create nuxt@latest -- -t ui
+🔗 **[https://atlas-frontend-challenge.vercel.app/](https://atlas-frontend-challenge.vercel.app/)**
+
+## Como Executar o Projeto
+
+### Requisitos
+
+Antes de começar, certifique-se de ter instalado em sua máquina:
+
+- **Node.js** (v18 ou superior)
+- **pnpm** (gerenciador de pacotes)
+
+Se não tiver o pnpm instalado, execute:
+
+```bash
+npm install -g pnpm
 ```
 
-## Deploy your own
+### Instalação e Execução
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-name=starter&repository-url=https%3A%2F%2Fgithub.com%2Fnuxt-ui-templates%2Fstarter&demo-image=https%3A%2F%2Fui.nuxt.com%2Fassets%2Ftemplates%2Fnuxt%2Fstarter-dark.png&demo-url=https%3A%2F%2Fstarter-template.nuxt.dev%2F&demo-title=Nuxt%20Starter%20Template&demo-description=A%20minimal%20template%20to%20get%20started%20with%20Nuxt%20UI.)
+1. **Clone ou acesse o repositório:**
 
-## Setup
+```bash
+cd atlas-frontend-challenge
+```
 
-Make sure to install the dependencies:
+2. **Instale as dependências:**
 
 ```bash
 pnpm install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+3. **Execute o servidor de desenvolvimento:**
 
 ```bash
 pnpm dev
 ```
 
-## Production
+A aplicação será iniciada em `http://localhost:3000`
 
-Build the application for production:
+4. **Para fazer o build para produção:**
 
 ```bash
 pnpm build
 ```
 
-Locally preview production build:
+5. **Para visualizar a build de produção localmente:**
 
 ```bash
 pnpm preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Uso de IA
 
-## Renovate integration
+Este projeto foi desenvolvido com o auxílio de **Inteligência Artificial** nos seguintes cenários:
 
-Install [Renovate GitHub app](https://github.com/apps/renovate/installations/select_target) on your repository and you are good to go.
+- 🎨 **Design Base**: Geração do design inicial através do Figma Make
+- 💡 **Dúvidas Pontuais de Código**: Resolução de questões específicas durante o desenvolvimento
+- ⌨️ **Auto-complete**: Utilização de features de auto-complete do VSCode para agilizar a codificação
+- 📊 **Dados Mockados**: Geração de dados simulados para facilitar o desenvolvimento e testes
+- ⚙️ **Funções Server Side**: Implementação de algumas funções no servidor para prover dados ao frontend
+
+---
+
+**Desenvolvido durante o Atlas Frontend Challenge**

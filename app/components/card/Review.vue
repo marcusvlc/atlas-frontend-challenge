@@ -1,11 +1,11 @@
 <template>
   <UCard>
     <div class="flex gap-2">
-      <NuxtImg
+      <CommonsOptimizedImage
         :src="review.avatar"
-        width="15"
-        height="15"
-        class="w-15 h-15 rounded-full object-cover flex-shrink-0"
+        :width="60"
+        :height="60"
+        custom-class="rounded-full flex-shrink-0 w-15 h-15"
       />
       <div class="flex flex-col gap-2 flex-1">
         <h2 class="font-bold">{{ review.author }}</h2>

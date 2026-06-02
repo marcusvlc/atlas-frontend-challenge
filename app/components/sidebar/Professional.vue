@@ -60,12 +60,14 @@
           <h2 class="text-md font-bold">Galeria de trabalhos</h2>
 
           <div class="grid grid-cols-3 gap-2">
-            <NuxtImg
+            <CommonsOptimizedImage
               v-for="(image, index) in profesional.gallery"
               :key="index"
               :src="image"
-              class="rounded-lg object-cover w-full h-48"
-            ></NuxtImg>
+              :width="400"
+              :height="300"
+              custom-class="rounded-lg"
+            />
           </div>
         </section>
 

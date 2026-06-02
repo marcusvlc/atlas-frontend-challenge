@@ -1,6 +1,11 @@
 <template>
   <div class="flex flex-col items-center gap-4">
-    <NuxtImg width="150" height="150" :src="photo" class="rounded-full" />
+    <CommonsOptimizedImage
+      :src="photo"
+      :width="150"
+      :height="150"
+      custom-class="rounded-full w-40 h-40"
+    />
     <h2 class="text-2xl font-bold">{{ name }}</h2>
     <p class="text-gray-500">{{ profession }}</p>
 
