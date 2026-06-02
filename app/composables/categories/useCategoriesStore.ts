@@ -1,4 +1,4 @@
-import { ALL_CATEGORIES } from "../../../shared/constants/filters";
+import { ALL_CATEGORIES } from "~~/shared/constants/filters";
 
 const useCategoriesStore = () => {
   const categories = useState<string[]>("categories", () => []);

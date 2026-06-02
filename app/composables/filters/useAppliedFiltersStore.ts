@@ -1,4 +1,4 @@
-import { ALL_CATEGORIES } from "../../../shared/constants/filters";
+import { ALL_CATEGORIES } from "~~/shared/constants/filters";
 
 const useAppliedFiltersStore = () => {
   const currentCategory = useState<string>(

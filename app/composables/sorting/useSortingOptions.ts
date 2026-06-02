@@ -1,4 +1,4 @@
-import { SORT_TYPES, type SortType } from "../../../shared/constants/sort";
+import { SORT_TYPES, type SortType } from "~~/shared/constants/sort";
 
 const sortingLabels: Record<SortType, string> = {
   [SORT_TYPES.BEST_RATING]: "Melhor Avaliação",

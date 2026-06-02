@@ -1,4 +1,4 @@
-import { type SortType, SORT_TYPES } from "../../../shared/constants/sort";
+import { type SortType, SORT_TYPES } from "~~/shared/constants/sort";
 
 const useSortingStore = () => {
   const currentSort = useState<SortType>(
